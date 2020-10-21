@@ -2,7 +2,7 @@ import pytest
 import math
 import numpy as np
 
-from simple_functions import my_sum, factorial, sin_series
+from simple_functions import my_sum, factorial, sin_series, sub
 
 
 class TestSimpleFunctions(object):
@@ -36,3 +36,12 @@ class TestSimpleFunctions(object):
         """test sin"""
         sin_answer = sin_series(pi_number)
         assert np.isclose(sin_answer, expected, atol=1e-12)
+
+    @pytest.mark.parametrize(' a, b, expected', [
+        (2,1,1),
+        (5,2,3),
+        (1,0,1)
+    ])
+    def test_subtract(self, a, b, expected):
+        answer = sub(a,b)
+        assert answer==expected
